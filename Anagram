@@ -1,0 +1,18 @@
+def Anagram(s1,s2):
+    if len(s1) != len(s2):
+        return False
+    sl1 = []
+    sl2 = []
+    for i in range(len(s1)):
+        sl1.append(s1[i])
+        sl2.append(s2[i])
+    sl1.sort()
+    sl2.sort()
+    
+    if sl1 == sl2:
+        return True
+    return False
+        
+s1 = "listen"
+s2 = "silent"
+print(Anagram(s1,s2))
