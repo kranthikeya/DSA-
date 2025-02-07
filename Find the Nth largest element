@@ -1,0 +1,31 @@
+def parition(arr, l, r):
+    pivot = arr[r]
+    i = l
+    
+    for j in range(l,r):
+        if arr[j] > pivot:
+            arr[i],arr[j] = arr[j],arr[i]
+            i += 1
+    arr[i],arr[r] = arr[r],arr[i]
+    
+    return i
+def quickSelect(arr,l,r,n):
+    if l <= r:
+        
+        pivot_idx = parition(arr,l,r)
+        if pivot_idx == n-1:
+            return arr[pivot_idx]
+        elif pivot_idx > n-1:
+            return quickSelect(arr,l,pivot_idx-1,n)
+        else:
+            return quickSelect(arr,pivot_idx+1,r,n)
+            
+def find_Nth_ele(arr,n):
+    if n > len(arr) or n < 1:
+        return None
+    return quickSelect(arr,0,len(arr)-1,n)
+    
+arr = [3, 2, 1, 5, 6, 4]
+N = 4
+print(find_Nth_ele(arr, N))
+    
